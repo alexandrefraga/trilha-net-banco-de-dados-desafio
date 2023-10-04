@@ -1,1 +1,45 @@
+-- SQL 01
+SELECT Nome, Ano FROM Filmes
 
+-- SQL 02
+SELECT Nome, Ano FROM Filmes ORDER BY Ano
+
+-- SQL 03
+SELECT Nome, Ano, Duracao FROM Filmes WHERE Nome = 'De Volta para o Futuro'
+
+-- SQL 04
+SELECT Nome, Ano, Duracao FROM Filmes WHERE Ano = 1997
+
+-- SQL 05
+SELECT Nome, Ano, Duracao FROM Filmes WHERE Ano > 2000
+
+-- SQL 06
+SELECT Nome, Ano, Duracao FROM Filmes WHERE Duracao > 100 AND Duracao < 150 ORDER BY Duracao
+
+-- SQL 07
+SELECT Ano, COUNT(Duracao) Quantidade FROM Filmes GROUP BY Ano ORDER BY Quantidade Desc
+
+-- SQL 08
+SELECT * FROM Atores WHERE Genero = 'M'
+
+-- SQL 09
+SELECT PrimeiroNome, UltimoNome FROM Atores WHERE Genero = 'F' ORDER BY PrimeiroNome
+
+-- SQL 10
+SELECT F.Nome, G.Genero
+FROM Filmes as F
+JOIN FilmesGenero as FG ON F.Id=FG.IdFilme 
+JOIN Generos as G ON FG.IdGenero=G.Id
+
+-- SQL 11
+SELECT F.Nome, G.Genero
+FROM Filmes as F
+JOIN FilmesGenero as FG ON F.Id=FG.IdFilme 
+JOIN Generos as G ON FG.IdGenero=G.Id
+WHERE G.Genero = 'Mistério'
+
+-- SQL 12
+SELECT F.Nome, A.PrimeiroNome, A.UltimoNome, EF.Papel
+FROM Filmes as F
+JOIN ElencoFilme as EF ON F.Id = EF.IdFilme
+JOIN Atores as A ON EF.IdAtor = A.Id
